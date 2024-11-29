@@ -1,0 +1,32 @@
+﻿@model RentalCars.Models.Car
+
+
+<div class="car-card">
+    <div class="car-details">
+        <h3>@Model.Make @Mode.Make</h3>
+        <p>Price Per Day $@Model.PricePerDay</p>
+        <p>Availability: @(Model.IsAvailable ? "Available" : "Not Available")</p>
+        <a href="@Url.Action("Details" , "Car" , new { id = Model.CarId})" class="btn-danger">View Details</a>
+    </div>
+    <img src="~/images/@Model.ImageUrl" alt="@Model.Make @Model.Model" class="car-img" />
+</div>
+
+<style>
+    .car-card{
+        display: flex;
+        padding:15px;
+        margin: 10px 0;
+        background-color:blanchedalmond
+    }
+    .car-details{
+        margin-right:10px;
+    }
+    .car-image{
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+</style>
+
+

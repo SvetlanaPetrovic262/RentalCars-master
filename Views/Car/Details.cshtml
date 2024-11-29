@@ -1,0 +1,45 @@
+﻿@model RentalCars.Models.Car
+
+@{
+    ViewData["Title"] = $"{Model.Make} {Model.Model} Details";
+}
+
+<h1>@Model.Make @Model.Model</h1>
+
+<div class="car-details">
+
+    <img src="~/images/@Model.ImageUrl" alt="@Model.Make @Model.Model" style="width: 300px; height: auto;" />
+
+    <p class="mt-3"><strong>Price per Day:</strong> @Model.PricePerDay $</p>
+    <p><strong>Availability:</strong> @(Model.IsAvailable ? "Available" : "Currently Unavailable")</p>
+
+    <h3 class="mb-3">Specifications</h3>
+
+    <ul class="text-left">
+        <li><strong>Make: </strong>@Model.Make</li>
+        <li><strong>Model: </strong>@Model.Model</li>
+        <li><strong>Year: </strong>@Model.Year</li>
+        <li><strong>Seats: </strong>@Model.Seats</li>
+        <li><strong>Fuel Type: </strong>@Model.FuelType</li>
+    </ul>
+
+    @if (Model.IsAvailable)
+    {
+        <form asp-action="Create" asp-controller="Booking" method="get">
+            <input type="hidden" name="CarId" value="@Model.CarId" />
+            <input type="hidden" name="UserId" value="1" />
+            <button type="submit" class="btn m-3 btn-danger">Book This Car</button>
+        </form>
+    }
+    else
+    {
+        <p>This car is currently anavailable for booking.</p>
+    }
+</div>
+
+<style>
+    .car-details
+    {
+        margin-top = 20px;
+    }
+</style>

@@ -1,0 +1,15 @@
+﻿@model RentalCars.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Confirmation";
+}
+
+<h1>Booking Confirmation</h1>
+<p>Thank you for booking!</p>
+
+<div>
+    <p><strong>Car:</strong>@Model.Car.Make @Model.Car.Model</p>
+    <p><strong>Start Date:</strong>@Model.StartDate.ToShortDateString()</p>
+    <p><strong>End Date:</strong>@Model.EndDate.ToShortDateString()</p>
+    <p><strong>Total Price:</strong>$@Model.TotalPrice</p>
+</div>
